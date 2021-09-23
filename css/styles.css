@@ -23,6 +23,20 @@ form{
   margin: 0 auto;
 }
 
+.in-progress {
+  background-color: #0d6efd;
+  color: white;
+}
+
+.done {
+  background-color: #5cc51f;
+  color: white;
+}
+
+.pending {
+  background-color: #f0c712ce;
+  color: white;
+}
 
 /* .main{
   margin:0 auto ;
