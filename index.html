@@ -9,6 +9,7 @@
     />
     <link href="css/styles.css" rel="stylesheet" />
     <title>Task List</title>
+    
   </head>
 
   <body>
@@ -18,25 +19,28 @@
     <!-- As a heading -->
     
     <div class="main">
-      <form>
-        <div class="form-group">
-          <div>
-            <h2>Add New Task</h2>
-          </div>
-          <br />
-          <label for="task-input">Task Name</label> <br /><br />
+      <form id="form1">
+        <div>
+          <h2>Add New Task</h2>
+        </div>
+        <br >
+        <div class="form-group">          
+          <label for="task-name">Task Name</label> <br /><br />
           <input
             type="text"
-            id="task-input"
-            name="fname"            
+            id="taskName"
+            name="tname"
+            value="Task 1"
+            minlength="3" maxlength="25"  
+            required    
           />
           <br />
           <br />
         </div>
         <div class="form-group">
-          <label for="task-description"> Task Description</label><br /><br />
+          <label for="task-description">Task Description</label><br /><br />
           
-          <textarea id="task-description" name="fname" class="form-control" ></textarea>
+          <textarea id="taskDescription" name="dname" class="form-control" minlength="5" maxlength="250" required>having lunch</textarea>
           <br />          
         </div>
         
@@ -47,19 +51,27 @@
               <br /><br />
               <input
                 type="text"
-                id="for-assigne"
-                name="fname"            
+                id="assignedTo"
+                name="aname" 
+                value="Iryna"
+                minlength="3" maxlength="25"
+                required           
               />
             </div></div>
           <div class="col-sm">
             <div class="form-group">
-              <label for="birthday">Due Date:</label>
+              <label for="due-date">Due Date:</label>
               <br /><br />
-              <input type="date" id="birthday" name="birthday" />
+              <input type="date" id="dueDate" name="ddname" value="2021-05-09" required/>
             </div></div>
-        </div>       
+        </div>   
+        
         <br />
-        <button type="submit" class="btn btn-outline-success">Add Task</button>
+        <div id="validation-alert" class="alert alert-danger" role="alert">
+          Please, fill out the form.
+        </div>
+        <br />
+        <button id="btn-submit" type="submit" class="btn btn-outline-success">Add Task</button>
       </form>
         <hr>
         <br />
@@ -116,15 +128,11 @@
               <p class="card-text"><span class="in-progress">IN PROGRESS</span> <button type="button" class="btn btn-primary">Delete</button></p>                           
             </div>
           </div></li>
-        </ul>
-         
+        </ul>         
 
-      <br />
-  
+      <br />  
 
       </div>
-
-
 
     </div>
     <script
@@ -132,5 +140,6 @@
       integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
       crossorigin="anonymous"
     ></script>
+    <script src="index.js"></script>
   </body>
 </html>
