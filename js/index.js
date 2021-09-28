@@ -11,6 +11,7 @@ const taskName = newTaskNameInput.value;
 console.log("name:  "+ taskName);
 
 const newTaskDescription = document.querySelector('#taskDescription');
+console.dir(newTaskDescription);
 const taskDescription = newTaskDescription.value;
 console.log("task description:  " + taskDescription);
 
