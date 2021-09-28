@@ -30,7 +30,7 @@
             type="text"
             id="taskName"
             name="tname"
-            value="Task 1"
+            value=""
             minlength="3" maxlength="25"  
             required    
           />
@@ -40,7 +40,7 @@
         <div class="form-group">
           <label for="task-description">Task Description</label><br /><br />
           
-          <textarea id="taskDescription" name="dname" class="form-control" minlength="5" maxlength="250" required>having lunch</textarea>
+          <textarea id="taskDescription" name="dname" class="form-control" minlength="5" maxlength="250" required></textarea>
           <br />          
         </div>
         
@@ -53,7 +53,7 @@
                 type="text"
                 id="assignedTo"
                 name="aname" 
-                value="Iryna"
+                value=""
                 minlength="3" maxlength="25"
                 required           
               />
@@ -62,7 +62,7 @@
             <div class="form-group">
               <label for="due-date">Due Date:</label>
               <br /><br />
-              <input type="date" id="dueDate" name="ddname" value="2021-05-09" required/>
+              <input type="date" id="dueDate" name="ddname" value="" required/>
             </div></div>
         </div>   
         
@@ -140,6 +140,7 @@
       integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
       crossorigin="anonymous"
     ></script>
-    <script src="index.js"></script>
+    <script src="js/taskManager.js"></script>
+    <script src="js/index.js"></script>
   </body>
 </html>
