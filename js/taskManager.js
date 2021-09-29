@@ -23,8 +23,28 @@ class TaskManager{
     data.id = this.currentId;
     data.status = this.currentStatus;
     this.tasks.push(data);
-  }    
+  }
+  render(){
+    const tasksHtmlList = [];
+    for(let i = 0; i < this.tasks.length; i++){
+      const currentTask = this.tasks[i];
+      const date = new Date(currentTask.dueDate);
+      const formattedDate = date.toString();
+      currentTask.formattedDate = formattedDate;
+      const taskHtml = createTaskHtml(currentTask);
+      tasksHtmlList.push(taskHtml); 
+    }
+    
+    const tasksHtml = tasksHtmlList.join("\n");
+
+    document.getElementById("tasks-list").innerHTML = tasksHtml;
+
+  };    
 }
+const tasksHtmlList = [];
+
+
+
 
 const form1 = document.querySelector('#form1');
 const nameInput = document.querySelector('#taskName');
@@ -44,9 +64,8 @@ function onSubmit (event) {
   const data = {name, description, assignedTo, dueDate};
   
   taskManager.addTask(data);
-  // console.log(taskManager.tasks);
-  const taskHtml = createTaskHtml(data); 
-  console.log(taskHtml);
+  
+  taskManager.render();
 };
 
 form1.addEventListener("submit", onSubmit);
