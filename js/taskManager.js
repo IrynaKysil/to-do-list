@@ -1,3 +1,17 @@
+var createTaskHtml = ({name, description, assignedTo, dueDate, status}) => {
+  const html = `<li class="list-group-item"><div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <p class="card-text">${name}</p>
+    <p class="card-text">${description}</p>
+    <p class="card-text">${assignedTo}</p>
+    <p class="card-text">${dueDate}</p>
+    <p class="card-text"><span class="in-progress">${status}</span> <button type="button" class="btn btn-primary">Delete</button></p>                            
+  </div>
+</div></li>`;
+return html
+};
+
+
 class TaskManager{
   constructor(currentId=0, currentStatus="IN PROGRESS"){
     this.tasks = [];
@@ -9,8 +23,28 @@ class TaskManager{
     data.id = this.currentId;
     data.status = this.currentStatus;
     this.tasks.push(data);
-  }  
+  }
+  render(){
+    const tasksHtmlList = [];
+    for(let i = 0; i < this.tasks.length; i++){
+      const currentTask = this.tasks[i];
+      const date = new Date(currentTask.dueDate);
+      const formattedDate = date.toString();
+      currentTask.formattedDate = formattedDate;
+      const taskHtml = createTaskHtml(currentTask);
+      tasksHtmlList.push(taskHtml); 
+    }
+    
+    const tasksHtml = tasksHtmlList.join("\n");
+
+    document.getElementById("tasks-list").innerHTML = tasksHtml;
+
+  };    
 }
+const tasksHtmlList = [];
+
+
+
 
 const form1 = document.querySelector('#form1');
 const nameInput = document.querySelector('#taskName');
@@ -28,9 +62,10 @@ function onSubmit (event) {
   const dueDate = dueDateInput.value;
 
   const data = {name, description, assignedTo, dueDate};
-
+  
   taskManager.addTask(data);
-  console.log(taskManager.tasks);
+  
+  taskManager.render();
 };
 
 form1.addEventListener("submit", onSubmit);
