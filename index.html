@@ -18,7 +18,7 @@
     <!-- As a heading -->
     
     <div class="main">
-      <form>
+      <form id='studentform'>
         <div class="form-group">
           <div>
             <h2>Add New Task</h2>
@@ -38,7 +38,7 @@
         <div class="form-group">
           <label for="task-description"> Task Description</label><br /><br />
           
-          <textarea id="taskDescription" name="fname" class="form-control">feasiblity study</textarea>
+          <textarea id="taskDescription" name="fname" class="form-control" minlength="5" maxlength="250" required>feasiblity study</textarea>
           <br />          
         </div>
         
@@ -56,9 +56,9 @@
             </div></div>
           <div class="col-sm">
             <div class="form-group">
-              <label for="birthday">Due Date:</label>
+              <label for="">Due Date:</label>
               <br /><br />
-              <input type="date" id="birthday" name="birthday" />
+              <input type="date" id="dueDate" name="birthday" />
             </div></div>
         </div>       
         <br />
