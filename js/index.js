@@ -1,6 +1,6 @@
 const alert = document.querySelector('#validation-alert');
 const button = document.querySelector('#btn-submit');
-const form = document.querySelector('#form1');
+const form = document.querySelector('#task-form');
 
 form.addEventListener("change", validFormFieldInput)
 

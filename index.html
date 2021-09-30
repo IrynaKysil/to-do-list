@@ -9,41 +9,47 @@
     />
     <link href="css/styles.css" rel="stylesheet" />
     <title>Task List</title>
-    
   </head>
 
   <body>
-    <h1>Task List</h1> 
-      
+    <h1>Task List</h1>
 
     <!-- As a heading -->
-    
+
     <div class="main">
-      <form id="form1">
+      <form id="task-form">
         <div>
           <h2>Add New Task</h2>
         </div>
-        <br >
-        <div class="form-group">          
+        <br />
+        <div class="form-group">
           <label for="task-name">Task Name:</label> <br /><br />
           <input
             type="text"
             id="taskName"
             name="tname"
             value=""
-            minlength="3" maxlength="25"  
-            required    
+            minlength="3"
+            maxlength="25"
+            required
           />
           <br />
           <br />
         </div>
         <div class="form-group">
           <label for="task-description">Task Description:</label><br /><br />
-          
-          <textarea id="taskDescription" name="dname" class="form-control" minlength="5" maxlength="250" required></textarea>
-          <br />          
+
+          <textarea
+            id="taskDescription"
+            name="dname"
+            class="form-control"
+            minlength="5"
+            maxlength="250"
+            required
+          ></textarea>
+          <br />
         </div>
-        
+
         <div class="row">
           <div class="col-sm">
             <div class="form-group">
@@ -52,88 +58,119 @@
               <input
                 type="text"
                 id="assignedTo"
-                name="aname" 
+                name="aname"
                 value=""
-                minlength="3" maxlength="25"
-                required           
+                minlength="3"
+                maxlength="25"
+                required
               />
-            </div></div>
+            </div>
+          </div>
           <div class="col-sm">
             <div class="form-group">
               <label for="due-date">Due Date:</label>
               <br /><br />
-              <input type="date" id="dueDate" name="ddname" value="" required/>
-            </div></div>
-        </div>   
-        
+              <input type="date" id="dueDate" name="ddname" value="" required />
+            </div>
+          </div>
+        </div>
+
         <br />
-        <div id="validation-alert" class="alert alert-danger" style="display:none" role="alert">
+        <div
+          id="validation-alert"
+          class="alert alert-danger"
+          style="display: none"
+          role="alert"
+        >
           Please, fill out the form.
         </div>
         <br />
-        <button id="btn-submit" type="submit" class="btn btn-outline-success">Add Task</button>
+        <button id="btn-submit" type="submit" class="btn btn-outline-success">
+          Add Task
+        </button>
       </form>
-        <hr>
-        <br />
+      <hr />
+      <br />
 
       <!-- **************CARD************* -->
       <div style="margin: 0 auto; width: 20em">
-
         <h2>Tasks</h2>
 
-
         <ul id="tasks-list" class="list-group">
-          <li class="list-group-item"><div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <p class="card-text">Task Name</p>
-              <p class="card-text">Task Description</p>
-              <p class="card-text">Assigned To</p>
-              <p class="card-text">Due Date</p>
-              <p class="card-text"><span class="in-progress">IN PROGRESS</span> <button type="button" class="btn btn-primary">Delete</button></p>                            
+          <li class="list-group-item">
+            <div class="card" style="width: 18rem">
+              <div class="card-body">
+                <p class="card-text">Task Name</p>
+                <p class="card-text">Task Description</p>
+                <p class="card-text">Assigned To</p>
+                <p class="card-text">Due Date</p>
+                <p class="card-text">
+                  <span class="in-progress">IN PROGRESS</span>
+                  <button type="button" class="btn btn-primary">Delete</button>
+                </p>
+              </div>
             </div>
-          </div></li>
-          <li class="list-group-item"><div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <p class="card-text">Task Name</p>
-              <p class="card-text">Task Description</p>
-              <p class="card-text">Assigned To</p>
-              <p class="card-text">Due Date</p>
-              <p class="card-text"><span class="done">DONE</span> <button type="button" class="btn btn-primary">Delete</button></p>                           
+          </li>
+          <li class="list-group-item">
+            <div class="card" style="width: 18rem">
+              <div class="card-body">
+                <p class="card-text">Task Name</p>
+                <p class="card-text">Task Description</p>
+                <p class="card-text">Assigned To</p>
+                <p class="card-text">Due Date</p>
+                <p class="card-text">
+                  <span class="done">DONE</span>
+                  <button type="button" class="btn btn-primary">Delete</button>
+                </p>
+              </div>
             </div>
-          </div></li>
-          <li class="list-group-item"><div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <p class="card-text">Task Name</p>
-              <p class="card-text">Task Description</p>
-              <p class="card-text">Assigned To</p>
-              <p class="card-text">Due Date</p>
-              <p class="card-text"><span class="pending">PENDING</span> <button type="button" class="btn btn-primary">Delete</button></p>                              
+          </li>
+          <li class="list-group-item">
+            <div class="card" style="width: 18rem">
+              <div class="card-body">
+                <p class="card-text">Task Name</p>
+                <p class="card-text">Task Description</p>
+                <p class="card-text">Assigned To</p>
+                <p class="card-text">Due Date</p>
+                <p class="card-text">
+                  <span class="pending">PENDING</span>
+                  <button type="button" class="btn btn-primary">Delete</button>
+                </p>
+              </div>
             </div>
-          </div></li>
-          <li class="list-group-item"><div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <p class="card-text">Task Name</p>
-              <p class="card-text">Task Description</p>
-              <p class="card-text">Assigned To</p>
-              <p class="card-text">Due Date</p>
-              <p class="card-text"><span class="done">DONE</span> <button type="button" class="btn btn-primary">Delete</button></p>                              
+          </li>
+          <li class="list-group-item">
+            <div class="card" style="width: 18rem">
+              <div class="card-body">
+                <p class="card-text">Task Name</p>
+                <p class="card-text">Task Description</p>
+                <p class="card-text">Assigned To</p>
+                <p class="card-text">Due Date</p>
+                <p class="card-text">
+                  <span class="done">DONE</span>
+                  <button type="button" class="btn btn-primary">Delete</button>
+                </p>
+              </div>
             </div>
-          </div></li>
-          <li class="list-group-item"><div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <p class="card-text">Task Name</p>
-              <p class="card-text">Task Description</p>
-              <p class="card-text">Assigned To</p>
-              <p class="card-text">Due Date</p>
-              <p class="card-text"><span class="in-progress">IN PROGRESS</span> <button type="button" class="btn btn-primary">Delete</button></p>                           
+          </li>
+          <li class="list-group-item">
+            <div class="card" style="width: 18rem">
+              <div class="card-body">
+                <p class="card-text">Task Name</p>
+                <p class="card-text">Task Description</p>
+                <p class="card-text">Assigned To</p>
+                <p class="card-text">Due Date</p>
+                <p class="card-text">
+                  <span class="in-progress">IN PROGRESS</span>
+                  <button type="button" class="btn btn-primary">Delete</button>
+                </p>
+              </div>
             </div>
-          </div></li>
-        </ul>         
+          </li>
+        </ul>
 
-      <br />  
-
+        <br />
       </div>
-
     </div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
