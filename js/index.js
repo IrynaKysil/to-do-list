@@ -27,3 +27,19 @@ console.log("due date:  " + dueDate);
 const onClick = () => alert.style.display = form.checkValidity() ? 'none' : 'block'; 
 button.addEventListener('click', onClick);
 
+
+const taskList = document.querySelector('#tasks-list');
+taskList.addEventListener('click', (event) => { // "event" here is the event parameter
+  console.log(event.target.classList.contains('done-button'))
+  let parentTask;
+  let currentElement = event.target;
+  while(currentElement){
+    if (currentElement.nodeName === 'LI'){
+      parentTask = currentElement;
+      break;
+    } else {
+      currentElement = currentElement.parentElement;
+    }
+  } 
+  console.log(parentTask)
+});

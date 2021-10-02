@@ -1,14 +1,24 @@
-var createTaskHtml = ({name, description, assignedTo, dueDate, status}) => {
-  const html = `<li class="list-group-item"><div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <p class="card-text">${name}</p>
-    <p class="card-text">${description}</p>
-    <p class="card-text">${assignedTo}</p>
-    <p class="card-text">${dueDate}</p>
-    <p class="card-text"><span class="in-progress">${status}</span> <button type="button" class="btn btn-primary">Delete</button></p>                            
-  </div>
-</div></li>`;
-return html
+var createTaskHtml = ({name, description, assignedTo, dueDate, status, id}) => {
+  const html = `
+    <li class="list-group-item">
+        <div class="card" style="width: 18rem;">
+              <div class="card-body" data-task-id="${id}">
+                <p class="card-text">${name}</p>
+                <p class="card-text">${description}</p>
+                <p class="card-text">${assignedTo}</p>
+                <p class="card-text">${dueDate}</p>          
+                <p class="card-text">
+                    <span class="in-progress">${status}</span> 
+                    <button type="button" class="btn btn-primary done-button">Mark As Done
+                    </button>
+                </p>
+                <p class="card-text">
+                  <button type="button" class="btn btn-primary">Delete</button>
+                </p>                             
+              </div>
+        </div>
+    </li>`;
+  return html
 };
 
 
@@ -41,10 +51,8 @@ class TaskManager{
 
   };    
 }
+
 const tasksHtmlList = [];
-
-
-
 
 const form1 = document.querySelector('#form1');
 const nameInput = document.querySelector('#taskName');
