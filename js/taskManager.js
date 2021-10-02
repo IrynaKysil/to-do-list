@@ -44,12 +44,21 @@ class TaskManager{
       const taskHtml = createTaskHtml(currentTask);
       tasksHtmlList.push(taskHtml); 
     }
-    
+
     const tasksHtml = tasksHtmlList.join("\n");
 
     document.getElementById("tasks-list").innerHTML = tasksHtml;
-
-  };    
+  };
+  
+  getTaskById(taskId) {
+    let foundTask;
+    this.tasks.forEach(task => {
+      if (task.id === taskId) {
+        foundTask = task;
+      }
+    })
+    return foundTask;
+  }
 }
 
 const tasksHtmlList = [];
@@ -74,6 +83,8 @@ function onSubmit (event) {
   taskManager.addTask(data);
   
   taskManager.render();
+
+  console.log(taskManager.getTaskById(2));
 };
 
 form1.addEventListener("submit", onSubmit);
