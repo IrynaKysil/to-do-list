@@ -35,11 +35,20 @@ taskList.addEventListener('click', (event) => { // "event" here is the event par
   let currentElement = event.target;
   while(currentElement){
     if (currentElement.nodeName === 'LI'){
-      parentTask = currentElement;
+      parentTask = currentElement;      
       break;
     } else {
       currentElement = currentElement.parentElement;
     }
   } 
-  console.log(parentTask)
+
+  const taskId = Number(parentTask.attributes['data-task-id'].value);
+
+  const task = taskManager.getTaskById(taskId);
+
+  task.status = 'DONE';
+
+  taskManager.render();
+
+ console.log(taskId);
 });

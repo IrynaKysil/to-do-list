@@ -1,8 +1,8 @@
 var createTaskHtml = ({name, description, assignedTo, dueDate, status, id}) => {
   const html = `
-    <li class="list-group-item">
+    <li class="list-group-item" data-task-id="${id}">
         <div class="card" style="width: 18rem;">
-              <div class="card-body" data-task-id="${id}">
+              <div class="card-body">
                 <p class="card-text">${name}</p>
                 <p class="card-text">${description}</p>
                 <p class="card-text">${assignedTo}</p>
@@ -29,7 +29,7 @@ class TaskManager{
     this.currentStatus = currentStatus;
   }
   addTask(data){
-    this.currentId = this.currentId + 1;
+    this.currentId = this.currentId++;
     data.id = this.currentId;
     data.status = this.currentStatus;
     this.tasks.push(data);
@@ -84,7 +84,7 @@ function onSubmit (event) {
   
   taskManager.render();
 
-  console.log(taskManager.getTaskById(2));
+  console.log(taskManager.getTaskById(0));
 };
 
 form1.addEventListener("submit", onSubmit);
