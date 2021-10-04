@@ -50,9 +50,7 @@ class TaskManager{
       const taskHtml = createTaskHtml(currentTask);
       tasksHtmlList.push(taskHtml); 
     }
-
     const tasksHtml = tasksHtmlList.join("\n");
-
     document.getElementById("tasks-list").innerHTML = tasksHtml;
   };
   
@@ -73,6 +71,17 @@ class TaskManager{
     let currentId = String(this.currentId);
     localStorage.setItem('currentId', currentId);
   };
+
+  load() {
+    if (localStorage.getItem("tasks")) {
+      let tasksJson = localStorage.getItem("tasks");
+      this.tasks = JSON.parse(tasksJson);      
+    }
+    if (localStorage.getItem("currentId")) {
+      this.currentId = localStorage.getItem("currentId");
+      this.currentId = Number(this.currentId);
+    }
+  }
 }
 
 const tasksHtmlList = [];
@@ -84,6 +93,10 @@ const assignedToInput = document.querySelector('#assignedTo');
 const dueDateInput = document.querySelector('#dueDate');
 
 const taskManager = new TaskManager();
+taskManager.load();
+taskManager.render();
+
+
 
 function onSubmit (event) {
   event.preventDefault();
