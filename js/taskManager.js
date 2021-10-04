@@ -4,15 +4,15 @@ function createTaskHtml({name, description, assignedTo, dueDate, status, id}) {
   status === "DONE" ? buttonVisibility = "invisible" : buttonVisibility = "visible";
   
   const html = `
-    <li class="list-group-item" data-task-id="${id}">
-        <div class="card" style="width: 18rem;">
+    <li class="list-group-item border-0" data-task-id="${id}">
+        <div>
               <div class="card-body">
                 <p class="card-text">${name}</p>
                 <p class="card-text">${description}</p>
                 <p class="card-text">${assignedTo}</p>
                 <p class="card-text">${dueDate}</p>          
                 <p class="card-text">
-                    <span class="in-progress">${status}</span> 
+                    <span class="badge badge-${status === 'DONE' ? 'success' : 'secondary'}">${status}</span> 
                     <button type="button" class="btn btn-primary done-button  ${buttonVisibility}">Mark As Done
                     </button>
                 </p>
