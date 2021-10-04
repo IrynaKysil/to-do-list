@@ -1,4 +1,4 @@
-var createTaskHtml = ({name, description, assignedTo, dueDate, status, id}) => {
+function createTaskHtml({name, description, assignedTo, dueDate, status, id}) {
   const html = `
     <li class="list-group-item" data-task-id="${id}">
         <div class="card" style="width: 18rem;">
@@ -28,12 +28,18 @@ class TaskManager{
     this.currentId = currentId;
     this.currentStatus = currentStatus;
   }
+
   addTask(data){
-    this.currentId = this.currentId++;
+
     data.id = this.currentId;
+    this.currentId = this.currentId + 1;
+    
     data.status = this.currentStatus;
     this.tasks.push(data);
+
+    this.save();
   }
+
   render(){
     const tasksHtmlList = [];
     for(let i = 0; i < this.tasks.length; i++){
@@ -44,9 +50,7 @@ class TaskManager{
       const taskHtml = createTaskHtml(currentTask);
       tasksHtmlList.push(taskHtml); 
     }
-
     const tasksHtml = tasksHtmlList.join("\n");
-
     document.getElementById("tasks-list").innerHTML = tasksHtml;
   };
   
@@ -59,6 +63,25 @@ class TaskManager{
     })
     return foundTask;
   }
+
+  save() {
+    let tasksJson = JSON.stringify(this.tasks);
+    localStorage.setItem('tasks', tasksJson);   
+
+    let currentId = String(this.currentId);
+    localStorage.setItem('currentId', currentId);
+  };
+
+  load() {
+    if (localStorage.getItem("tasks")) {
+      let tasksJson = localStorage.getItem("tasks");
+      this.tasks = JSON.parse(tasksJson);      
+    }
+    if (localStorage.getItem("currentId")) {
+      this.currentId = localStorage.getItem("currentId");
+      this.currentId = Number(this.currentId);
+    }
+  }
 }
 
 const tasksHtmlList = [];
@@ -70,6 +93,10 @@ const assignedToInput = document.querySelector('#assignedTo');
 const dueDateInput = document.querySelector('#dueDate');
 
 const taskManager = new TaskManager();
+taskManager.load();
+taskManager.render();
+
+
 
 function onSubmit (event) {
   event.preventDefault();
@@ -82,7 +109,7 @@ function onSubmit (event) {
   
   taskManager.addTask(data);
   
-  taskManager.render();
+  taskManager.render();  
 
   console.log(taskManager.getTaskById(0));
 };
