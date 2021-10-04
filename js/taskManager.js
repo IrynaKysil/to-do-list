@@ -13,7 +13,7 @@ function createTaskHtml({name, description, assignedTo, dueDate, status, id}) {
                     </button>
                 </p>
                 <p class="card-text">
-                  <button type="button" class="btn btn-primary">Delete</button>
+                  <button type="button" class="btn btn-primary delete-button">Delete</button>
                 </p>                             
               </div>
         </div>
@@ -70,7 +70,7 @@ class TaskManager{
 
     let currentId = String(this.currentId);
     localStorage.setItem('currentId', currentId);
-  };
+  }
 
   load() {
     if (localStorage.getItem("tasks")) {
@@ -81,6 +81,18 @@ class TaskManager{
       this.currentId = localStorage.getItem("currentId");
       this.currentId = Number(this.currentId);
     }
+  }
+
+  deleteTask(taskId) {
+    const newTasks = [];
+    this.tasks.forEach(task => {
+      if (task.id !== taskId) {
+        newTasks.push(task);        
+      }
+      
+    })
+    this.tasks = newTasks; 
+
   }
 }
 

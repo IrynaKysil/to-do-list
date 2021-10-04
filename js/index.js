@@ -30,7 +30,7 @@ button.addEventListener('click', onClick);
 
 const taskList = document.querySelector('#tasks-list');
 taskList.addEventListener('click', (event) => { 
-  console.log(event.target.classList.contains('done-button'))
+  //console.log(event.target.classList.contains('done-button'))
   let parentTask;
   let currentElement = event.target;
   while(currentElement){
@@ -40,17 +40,23 @@ taskList.addEventListener('click', (event) => {
     } else {
       currentElement = currentElement.parentElement;
     }
-  } 
-
+  }
+  
   const taskId = Number(parentTask.attributes['data-task-id'].value);
+  
+  if (event.target.classList.contains('done-button')) {
+    const task = taskManager.getTaskById(taskId);
+    task.status = 'DONE';  
+    taskManager.render();
+    taskManager.save();
+}  
 
-  const task = taskManager.getTaskById(taskId);
+ //console.log(taskId);
 
-  task.status = 'DONE';  
+ if (event.target.classList.contains('delete-button')) {
+   taskManager.deleteTask(taskId);
+   taskManager.save();
+   taskManager.render(); 
+ }
 
-  taskManager.render();
-
-  taskManager.save();
-
- console.log(taskId);
 });
