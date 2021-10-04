@@ -1,4 +1,4 @@
-var createTaskHtml = ({name, description, assignedTo, dueDate, status, id}) => {
+function createTaskHtml({name, description, assignedTo, dueDate, status, id}) {
   const html = `
     <li class="list-group-item" data-task-id="${id}">
         <div class="card" style="width: 18rem;">
@@ -28,12 +28,18 @@ class TaskManager{
     this.currentId = currentId;
     this.currentStatus = currentStatus;
   }
+
   addTask(data){
-    this.currentId = this.currentId++;
+
     data.id = this.currentId;
+    this.currentId = this.currentId + 1;
+    
     data.status = this.currentStatus;
     this.tasks.push(data);
+
+    this.save();
   }
+
   render(){
     const tasksHtmlList = [];
     for(let i = 0; i < this.tasks.length; i++){
@@ -59,6 +65,14 @@ class TaskManager{
     })
     return foundTask;
   }
+
+  save() {
+    let tasksJson = JSON.stringify(this.tasks);
+    localStorage.setItem('tasks', tasksJson);   
+
+    let currentId = String(this.currentId);
+    localStorage.setItem('currentId', currentId);
+  };
 }
 
 const tasksHtmlList = [];
@@ -82,7 +96,7 @@ function onSubmit (event) {
   
   taskManager.addTask(data);
   
-  taskManager.render();
+  taskManager.render();  
 
   console.log(taskManager.getTaskById(0));
 };

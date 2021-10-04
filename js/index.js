@@ -8,20 +8,20 @@ function validFormFieldInput(data) {
 
 const newTaskNameInput = document.querySelector('#taskName');
 const taskName = newTaskNameInput.value;
-console.log("name:  "+ taskName);
+//console.log("name:  "+ taskName);
 
 const newTaskDescription = document.querySelector('#taskDescription');
-console.dir(newTaskDescription);
+//console.dir(newTaskDescription);
 const taskDescription = newTaskDescription.value;
-console.log("task description:  " + taskDescription);
+//console.log("task description:  " + taskDescription);
 
 const newAssignedTo = document.querySelector('#assignedTo');
 const assignedTo = newAssignedTo.value;
-console.log("assigned to:  " + assignedTo);
+//console.log("assigned to:  " + assignedTo);
 
 const newDueDate = document.querySelector('#dueDate');
 const dueDate = newDueDate.value;
-console.log("due date:  " + dueDate);
+//console.log("due date:  " + dueDate);
 }
 
 const onClick = () => alert.style.display = form.checkValidity() ? 'none' : 'block'; 
@@ -29,7 +29,7 @@ button.addEventListener('click', onClick);
 
 
 const taskList = document.querySelector('#tasks-list');
-taskList.addEventListener('click', (event) => { // "event" here is the event parameter
+taskList.addEventListener('click', (event) => { 
   console.log(event.target.classList.contains('done-button'))
   let parentTask;
   let currentElement = event.target;
@@ -46,9 +46,11 @@ taskList.addEventListener('click', (event) => { // "event" here is the event par
 
   const task = taskManager.getTaskById(taskId);
 
-  task.status = 'DONE';
+  task.status = 'DONE';  
 
   taskManager.render();
+
+  taskManager.save();
 
  console.log(taskId);
 });
